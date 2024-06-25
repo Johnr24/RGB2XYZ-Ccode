@@ -43,8 +43,7 @@ void RGBtoXYZ::linearToXYZ(float r, float g, float b, float &x, float &y, float 
       matrix[1][0] = 0.17; matrix[1][1] = 0.797; matrix[1][2] = 0.33;
       matrix[2][0] = 0.131; matrix[2][1] = 0.046; matrix[2][2] = 0.823;
       break;
-    case 
-    D65_FCOBtape:
+    case D65_FCOBtape:
       // Example D65 Cob Tape with D65 illuminant coefficients
       matrix[0][0] = 0.8951; matrix[0][1] = 0.2664; matrix[0][2] = -0.1614;
       matrix[1][0] = -0.7502; matrix[1][1] = 1.7135; matrix[1][2] = 0.0367;
