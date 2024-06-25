@@ -1,26 +1,12 @@
 #include "RGBtoXYZ.h"
 
 RGBtoXYZ::RGBtoXYZ(ColorSpace space) : _colorSpace(space) {}
+XYZtoRGB::XYZtoRGB(ColorSpace space) : _colorSpace(space) {} // to add invert supoort
+// also to add, gamma support
 
 void RGBtoXYZ::convert(float r, float g, float b, float &x, float &y, float &z) {
-  rgbToLinear(r, g, b);
   linearToXYZ(r, g, b, x, y, z);
-}
-
-void RGBtoXYZ::rgbToLinear(float &r, float &g, float &b) {
-  // Assuming sRGB
-  auto sRGBToLinear = [](float color) -> float {
-    if (color <= 0.04045) {
-      return color / 12.92;
-    } else {
-      return pow((color + 0.055) / 1.055, 2.4);
-    }
-  };
-
-  r = sRGBToLinear(r / 255.0);
-  g = sRGBToLinear(g / 255.0);
-  b = sRGBToLinear(b / 255.0);
-}
+  }
 
 void RGBtoXYZ::linearToXYZ(float r, float g, float b, float &x, float &y, float &z) {
   // Select color space tristimulus values
@@ -55,4 +41,4 @@ void RGBtoXYZ::linearToXYZ(float r, float g, float b, float &x, float &y, float 
     x = r * matrix[0][0] + g * matrix[0][1] + b * matrix[0][2];
     y = r * matrix[1][0] + g * matrix[1][1] + b * matrix[1][2];
     z = r * matrix[2][0] + g * matrix[2][1] + b * matrix[2][2];
-}
+};
