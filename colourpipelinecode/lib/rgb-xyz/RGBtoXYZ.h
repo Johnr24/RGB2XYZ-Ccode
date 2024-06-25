@@ -6,7 +6,7 @@
 
 class RGBtoXYZ {
   public:
-    enum ColorSpace { SRGB_D65, AdobeRGB_D65, Rec2020_D65, chaos_doob_D65_FCOBtape};
+    enum ColorSpace { SRGB_D65, AdobeRGB_D65, Rec2020_D65, D65_FCOBtape};
     RGBtoXYZ(ColorSpace space = SRGB_D65);
     void convert(float r, float g, float b, float &x, float &y, float &z);
   private:
